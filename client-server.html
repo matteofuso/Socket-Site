@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socket - Client Server</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="styles/style.css" />
+</head>
+
+<body class="d-flex flex-column">
+    <div id="header_nav_placeholder" data-selected-id="3"></div>
+    <main class="container flex-grow-1 my-4">
+        <h1>L’architettura Client - Server</h1>
+        <hr>
+        <div class="row align-items-center">
+            <h3>Come funziona l’architettura Client-Server?</h3>
+            <div class="col-12 col-xl-5">
+                <img src="images/client-server.png" alt="Socket" class="img-fluid rounded my-2">
+            </div>
+            <div class="col-12 col-xl-7">
+                <p>
+                    L’architettura <strong>Client Server</strong> è uno dei modelli principali utilizzato dalla maggior
+                    parte dei servizi
+                    internet in circolazione.
+                    Questo prevede l’utilizzo di due moduli, un Client ed un Server.
+                    Il ruolo principale del client è quello di inviare richieste al server per accedere ad un servizio.
+                    Quest’ultimo procederà alla <strong>elaborazione</strong> della richiesta per poi fornire risorse o
+                    servizi.
+                    Dal punto di vista logico, entrambi gli attori sono degli applicativi che si mettono in
+                    comunicazione
+                    tramite una <a href=socket.html">socket</a>, in particolare il server utilizza la primitiva di
+                    listen per aspettare la
+                    connessione del client che invierà poi una serie di richieste da rispondere.
+                    Un'alternativa all’architettura client-server è quella <a
+                        href="glossario.html#Peer-To-Peer">peer-to-peer</a>, dove ogni nodo funge
+                    contemporaneamente sia da client che da server.
+                </p>
+            </div>
+        </div>
+        <div class="my-4">
+            <h3>Perché è necessaria la divisione dei ruoli?</h3>
+            <p>
+                Questa divisione dei ruoli è fondamentale negli applicativi dove è necessario
+                <strong>centralizzare</strong> le
+                informazioni e <strong>proteggerle</strong>, basti pensare alla debolezza di una semplice pagina di
+                login se le credenziali fossero già salvati nel client.
+                Un’altro motivo per cui si è reso necessario la transizione a questa architettura è il fatto di
+                <strong>alleggerire</strong> notevolmente gli applicativi dal punto di vista computazionale e di
+                archiviazione, se i dati
+                di tutti i siti web fossero salvati in ogni macchina, sarebbe necessario una grande quantità di spazio
+                solo per l’utilizzo di un <a href="glossario.html#Browser">browser</a>.
+                Infine, a favorire la transizione è la specializzazione delle operazioni, la quale rende più facilmente
+                gestire un programma o un servizio, è lo stesso ragionamento che è stato messo in atto nella pila
+                <a href="iso-osi.html">ISO/OSI</a>, la base delle telecomunicazioni.
+            </p>
+        </div>
+        <div>
+            <div class="row align-items-center">
+                <h3>I vantaggi dell’architettura Client-Server</h3>
+                <div class="col-12 col-xl-8">
+                    <p>
+                        I vantaggi dell’utilizzo di questa architettura sono notevoli, vediamone alcuni:
+                    </p>
+                    <ul class="list-group">
+                        <li class="list-group-item list-group-item-action"><strong>Semplicità di
+                                manutenzione</strong><br>
+                            Dato che le informazioni di un applicativo sono contenute in un <strong>numero
+                                ridotto</strong> di server, è necessario modificare le informazioni qui per aggiornare i
+                            dati in
+                            migliaia di
+                            client.</li>
+                        <li class="list-group-item list-group-item-action"><strong>Scalabilità</strong><br>
+                            Man mano che il numero di <strong>client cresce</strong>, è sufficiente aumentare la
+                            capacità dei
+                            server, applicando quello che viene definito <a href="glossario.html#Load-Balancing">load
+                                balancing</a>, permettendo di crescere senza
+                            compromettere le prestazioni</li>
+                        <li class="list-group-item list-group-item-action"><strong>Centralizzazione dei
+                                dati</strong><br>
+                            Centralizzare i dati permette di <strong>facilitare la gestione</strong> di essi,
+                            eliminando la possibilità di avere <strong>duplicati</strong> in posizioni diverse, con
+                            anche informazioni
+                            differenti. Questo permette inoltre di aggiornare un dato in un unico punto e renderlo
+                            immediatamente disponibile a tutti i client</li>
+                        <li class="list-group-item list-group-item-action"><strong>Sicurezza migliorata</strong><br>
+                            Non distribuendo tutti i dati a tutti i client, solo le informazioni
+                            necessarie al funzionamento del client sono condivise, permettendo di aumentare la sicurezza
+                            dei
+                            dati immagazzinati nel server. L'accesso dei dati può essere protetto da accessi non
+                            autorizzati e
+                            <a href="glossario.html#Crittografare">crittografato</a>.
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-4 d-none d-xl-block">
+                    <img src="images/server-room.jpg" alt="Socket" class="img-fluid rounded my-2">
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="footer_placeholder"></div>
+    <script src="scripts/loadHeaderNav.js"></script>
+    <script src="scripts/loadFooter.js"></script>
+    <script src="scripts/color-modes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
